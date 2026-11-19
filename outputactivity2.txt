@@ -1,0 +1,35 @@
+C:\Users\Anu\PycharmProjects\PythonProject3\.venv\Scripts\python.exe C:\Users\Anu\AppData\Roaming\JetBrains\PyCharmCE2024.3\scratches\activity2.py 
+======================================================================
+TASK 1 - Transmission time of one 8-byte frame
+======================================================================
+ CAN @ 500 kbit/s: 0.266 ms
+ FlexRay @ 5 Mbit/s: 0.027 ms (10x faster)
+
+======================================================================
+TASK 2 - Busy CAN bus vs FlexRay Latency (ADAS Burst)
+======================================================================
+ ADAS frames | CAN steering | FlexRay steering
+          0  |  0.798 ms MEETS  | 0.027 ms (always)
+          4  |  1.862 ms MEETS  | 0.027 ms (always)
+          8  |  2.926 ms MEETS  | 0.027 ms (always)
+         12  |  3.990 ms MEETS  | 0.027 ms (always)
+         15  |  4.788 ms MEETS  | 0.027 ms (always)
+         20  |  6.118 ms MISSES | 0.027 ms (always)
+
+======================================================================
+TASK 6 - Hybrid architecture Recommendation
+======================================================================
+ Steering cmd    -> FlexRay (Guaranteed slot needed)
+ Brake cmd       -> FlexRay (Guaranteed slot needed)
+ Wheel-speed     -> FlexRay (Guaranteed slot needed)
+ Battery stat    -> CAN Bus (Relaxed / Event-driven)
+ Infotainment    -> CAN Bus (Relaxed / Event-driven)
+
+======================================================================
+Q3 - Fallback when a communication channel is lost
+======================================================================
+ Normal       : Steering & Brake on FlexRay A AND B (0.027 ms latency)
+ Lose A       : B still delivers them, same latency (0.027 ms)
+ Lose FlexRay : Fallback to CAN on reserved top IDs. Safe-stop mode initiated.
+
+Process finished with exit code 0

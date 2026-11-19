@@ -1,0 +1,30 @@
+======================================================================
+TASK 1 - CAN arbitration
+======================================================================
+ Transmission order: Airbag (0x040) -> ABS (0x080) -> Engine (0x180) -> Dashboard (0x300)
+
+======================================================================
+TASKS 2 & 3 - Timing at 500 kbit/s, error-free
+======================================================================
+ 1 Airbag          (0x040) Tx: 0.3us Wait: 0.0us Finish: 266.4us DL: 2.0ms MEETS (critical)
+ 2 ABS             (0x080) Tx: 0.3us Wait: 266.4us Finish: 532.8us DL: 2.0ms MEETS (critical)
+ 3 Engine          (0x180) Tx: 0.3us Wait: 532.8us Finish: 799.2us DL: 10.0ms MEETS
+ 4 Dashboard       (0x300) Tx: 0.3us Wait: 799.2us Finish: 1065.6us DL: 50.0ms MEETS
+
+======================================================================
+TASK 4 - ABS frame corrupted once (Retransmission)
+======================================================================
+ Airbag          finish: 266.4us (attempts: 1)
+ ABS             finish: 845.2us (attempts: 2)
+ Engine          finish: 1111.6us (attempts: 1)
+ Dashboard       finish: 1378.0us (attempts: 1)
+
+======================================================================
+TASK 5 - Is a higher bit rate always better?
+======================================================================
+  125 kbit/s | Lmax margin:  530 m | Verdict: Misses worst-case deadline
+  250 kbit/s | Lmax margin:  250 m | Verdict: Misses worst-case deadline
+  500 kbit/s | Lmax margin:  110 m | Verdict: OK
+ 1000 kbit/s | Lmax margin:   40 m | Verdict: OK
+
+Process finished with exit code 0

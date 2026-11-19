@@ -1,0 +1,14 @@
+--- CAN Hardware Architecture Selection ---
+Hardware Architecture: Microcontroller -> SPI/Parallel Bus -> SJA1000 CAN Controller -> CAN Transceiver -> CAN Bus
+Controller Mode: FULL CAN (SJA1000 PeliCAN mode) is suitable.
+Reason: System handles 32 identifiers. Full CAN provides a larger 64-byte FIFO and offloads CPU overhead.
+
+--- Acceptance Filter Verification ---
+Required CAN ID: 0x123
+ACR (Acceptance Code): 0x24
+AMR (Acceptance Mask): 0x3
+ID Top 8 Bits: 0x24
+Verdict: MATCH. The CAN hardware will ACCEPT message ID 0x123.
+Data Length: 8 bytes is valid (Standard CAN supports up to 8 bytes).
+
+Process finished with exit code 0
